@@ -1,0 +1,16 @@
+CC=g++
+CFLAGS = -I
+SRC= main.cpp sys.hpp sys.cpp
+EXE= Program.app 
+LINK= -lSDL2
+PROG_NAME=Archon
+
+
+
+#Format: Complier-> Executable -> Sources -> LinkableLibs
+all: $(SRC)
+	$(CC) -o $(EXE) $(SRC) -w $(LINK)
+	$(info ******START*********)
+
+system: sys.o sys.o
+	$(CC) -o sys.o sys.cpp sys.hpp -w $(LINK)

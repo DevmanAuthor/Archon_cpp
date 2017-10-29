@@ -22,6 +22,12 @@ void System::OpenNew(int x, int y)
 				}
 		}
 }
+
+
+void System::add(Object* obj)
+{
+	
+}
 //************END-OF-SYSTEM****************//
 
 

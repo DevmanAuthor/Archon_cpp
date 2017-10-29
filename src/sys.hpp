@@ -2,7 +2,7 @@
 #define SYS_HPP
 #include <SDL2/SDL.h>
 #include "utils.hpp"
-
+#include <list>
 
 class Object
 {
@@ -29,6 +29,8 @@ class System
 	public:
 		SDL_Window* Window;
 		SDL_Surface* WindowSurface;
+		std::list<Object*> Objects;
+		void add(Object* obj);
 		void OpenNew(int x, int y);				
 		System();	
 

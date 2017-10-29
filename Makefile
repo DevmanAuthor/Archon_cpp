@@ -1,11 +1,17 @@
 CC=g++
-SRCS= main.cpp sys.hpp sys.cpp world.hpp world.cpp utils.cpp utils.hpp
+
+MAIN_SRC= main.cpp $(D1)/sys.hpp $(D1)/sys.cpp $(D1)/world.hpp $(D1)/world.cpp $(D2)/utils.cpp $(D2)/utils.hpp  
+
+
+INC_PARAMS=$(foreach d, $(INC), -I$d)
+INC= $(D1) $(D2)
+D1= src
+D2= tool
+
 LIBS= -lSDL2
 PROG_NAME=Archon
 
 
-all: $(PROG_NAME)
-
-$(PROG_NAME): $(SRCS)
-	$(CC) -o $(PROG_NAME) $(SRCS) -w $(LIBS) 
+all: $(SRCS)
+	$(CC) -o $(PROG_NAME) $(MAIN_SRC) -w $(LIBS) $(INC_PARAMS) -Wall
 	$(info ******START*********)

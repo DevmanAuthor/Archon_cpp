@@ -8,6 +8,7 @@ fi
 if [ "$2" == "remote" ]; then
 	cd .. 
 	make all
+	git add -a
         git commit -m -a	
 	git push -f origin master
 fi

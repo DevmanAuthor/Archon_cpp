@@ -1,6 +1,6 @@
 #ifndef WORLD_H
 #define WORLD_H
-#include "sys.h"
+#include "../system/sys.h"
 #include <SDL2/SDL.h>
 
 typedef struct tile{SDL_Point pos; SDL_Surface* gfx;} tile; 

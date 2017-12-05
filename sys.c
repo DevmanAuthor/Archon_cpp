@@ -14,7 +14,7 @@ int sys_init()
 	else{SDL_FillRect(sys.Viewport, NULL, SDL_MapRGB(sys.Viewport->format, 0,0,0));} 
 	int imgflags = IMG_INIT_PNG;
 	if(!(IMG_Init(imgflags) & imgflags)) {printf("SDL_Image could not start imgflags! %s", SDL_GetError());}
-	glEnable(GL_BLEND);
+
 }
 
 void sys_update()
@@ -72,9 +72,11 @@ SDL_Texture* loadtex(char * path)
 {
 	SDL_Texture* pass;
 	SDL_Surface* surf = loadoptgfx(path);
-	SDL_SetColorKey(surf, SDL_TRUE, SDL_MapRGB(surf->format, 0,0,0));
+//	SDL_SetColorKey(surf, SDL_TRUE, SDL_MapRGB(surf->format, 0,0,0));
 	if (surf == NULL){printf("Sorry, SDL failed to load surface %s \n due to Error: ", path, SDL_GetError());}
 	else { pass = SDL_CreateTextureFromSurface(sys.Renderer, surf);}
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	if (pass == NULL) {printf("sorry, SDL failed to load *TEXTURE* %s \n due to Error: ", path, SDL_GetError());}
 	SDL_FreeSurface(surf);
 	return pass;	

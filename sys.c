@@ -60,24 +60,8 @@ void draw_gfx_line(int start, int end, int xyconst, SDL_Surface* gfx, char d)
 }
 
 void draw_gfx(SDL_Surface* gfx, int x, int y)
-{
-	SDL_Rect r={x, y, gfx->clip_rect.w, r.h=gfx->clip_rect.h};SDL_BlitSurface(gfx, NULL, sys.Viewport,&r);	
-}
+{SDL_Rect r={x, y, gfx->clip_rect.w, r.h=gfx->clip_rect.h};SDL_BlitSurface(gfx, NULL, sys.Viewport,&r);}
 
-void draw_tex(SDL_Texture* tex, SDL_Rect* clip)
-{
-	SDL_RenderCopy(sys.Renderer, tex, &clip, &sys.Viewport->clip_rect); 
-}
-SDL_Texture* loadtex(char * path)
-{
-	SDL_Texture* pass;
-	SDL_Surface* surf = loadoptgfx(path);
-//	SDL_SetColorKey(surf, SDL_TRUE, SDL_MapRGB(surf->format, 0,0,0));
-	if (surf == NULL){printf("Sorry, SDL failed to load surface %s \n due to Error: ", path, SDL_GetError());}
-	else { pass = SDL_CreateTextureFromSurface(sys.Renderer, surf);}
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	if (pass == NULL) {printf("sorry, SDL failed to load *TEXTURE* %s \n due to Error: ", path, SDL_GetError());}
-	SDL_FreeSurface(surf);
-	return pass;	
-}
+void draw_tex(SDL_Texture* tex, SDL_Rect clip){SDL_RenderCopy(sys.Renderer, tex, &clip, &sys.Viewport->clip_rect);}
+
+SDL_Texture* loadtex(char * path){return (SDL_Texture*)IMG_LoadTexture(sys.Renderer, path);}

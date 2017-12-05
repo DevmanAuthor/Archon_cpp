@@ -1,5 +1,5 @@
 #include "world.h"
-#include "sprite.h"
+#include "entity.h"
 //World//
 void world_init()
 {
@@ -10,7 +10,7 @@ void world_draw()
 	arena_draw();
 	outline_draw();
 //	SDL_RenderCopy(sys.Renderer, Eliram.sheet, &Eliram.clip[0], &sys.Viewport->clip_rect);
-	animate_sprite(Eliram);
+	animate_sprite(Cast, 32,32);
 }
 
 void world_load_content()
@@ -22,8 +22,8 @@ void world_load_content()
 	border_vert.gfx = loadoptgfx("gfx/Viewport/border-vertical.png");
 	border_horz.gfx = loadoptgfx("gfx/Viewport/border-horizontal.png");
 	Default_tile.gfx = loadoptgfx("gfx/Viewport/tilesz.png");
-	Eliram = load_sprite("Eliram", "gfx/Entity/Wizards/Eliram.png");
-	debug_sprite(Eliram);
+	Cast = load_sprite("Eliram", "gfx/Entity/Wizards/Eliram.png");
+	debug_sprite(Cast);
 }
 
 //Arena//

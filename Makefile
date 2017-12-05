@@ -1,8 +1,8 @@
 cc=gcc
-srcs=main.c sys.c game.c world.c sprite.c 
+srcs=main.c sys.c game.c world.c sprite.c entity.c 
 exen=main
-libs=-lSDL2 -lncurses -lSDL2_image -lGL -lGLU -lGLEW 
-dirs=
+libs=-lSDL2 -lncurses -lSDL2_image -lSDL2_gfx 
+dirs=-I
 
 all: $(srcs)
 	$(cc) $(srcs) -o $(exen) -w $(libs) -g 

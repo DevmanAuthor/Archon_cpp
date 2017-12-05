@@ -21,10 +21,11 @@ sprite load_sprite(char* name, char* sheetpath)
 	return s;
 }
 
-void animate_sprite(sprite s)
+void animate_sprite(sprite s, int x, int y)
 {
 	int frame = (int)((SDL_GetTicks()/200)%4);
-	SDL_Rect renderloc ={100,100,32,32};
+	SDL_Rect renderloc ={x, y,32,32};
+	SDL_SetRenderDrawBlendMode(sys.Renderer, SDL_BLENDMODE_BLEND);
 	SDL_RenderCopy(sys.Renderer, s.sheet, &s.clip[frame],&renderloc);
 }
 

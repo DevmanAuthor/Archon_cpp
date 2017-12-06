@@ -22,13 +22,13 @@ void arena_init(tile B)
 
 void arena_load()
 {
-	Arena.Border.nw.gfx = loadoptgfx("gfx/Viewport/border-corner-nw.png");
-	Arena.Border.ne.gfx = loadoptgfx("gfx/Viewport/border-corner-ne.png");
-	Arena.Border.se.gfx = loadoptgfx("gfx/Viewport/border-corner-se.png");
-	Arena.Border.sw.gfx = loadoptgfx("gfx/Viewport/border-corner-sw.png");
-	Arena.Border.v.gfx = loadoptgfx("gfx/Viewport/border-vertical.png");
-	Arena.Border.h.gfx = loadoptgfx("gfx/Viewport/border-horizontal.png");
-	Default_tile.gfx = loadoptgfx("gfx/Viewport/tilesz.png");
+	Arena.Border.nw.gfx = loadoptgfx("content/gfx/Viewport/border-corner-nw.png");
+	Arena.Border.ne.gfx = loadoptgfx("content/gfx/Viewport/border-corner-ne.png");
+	Arena.Border.se.gfx = loadoptgfx("content/gfx/Viewport/border-corner-se.png");
+	Arena.Border.sw.gfx = loadoptgfx("content/gfx/Viewport/border-corner-sw.png");
+	Arena.Border.v.gfx = loadoptgfx("content/gfx/Viewport/border-vertical.png");
+	Arena.Border.h.gfx = loadoptgfx("content/gfx/Viewport/border-horizontal.png");
+	Default_tile.gfx = loadoptgfx("content/gfx/Viewport/tilesz.png");
 
 }
 void arena_draw()

@@ -1,11 +1,10 @@
 #include "game.h"
 #include <stdio.h>
 
-int quit;
 
 void game_init()
 {
-	quit = 0;	
+	quit = false;	
 	sys_init();
 	world_load_content();
 	world_init();
@@ -17,7 +16,7 @@ void game_run()
 	{
 		sys_update();
 		world_draw();
-		while(SDL_PollEvent(&sys.Queue) != 0){if(sys.Queue.type == SDL_QUIT){quit=1;}}
+		while(SDL_PollEvent(&sys.Queue) != 0){if(sys.Queue.type == SDL_QUIT){quit=true;}}
 	}
 }
 

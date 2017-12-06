@@ -7,6 +7,7 @@
 
 
 
+bool quit;
 void game_init();
 void game_run();
 

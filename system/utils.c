@@ -1,5 +1,6 @@
 #include "sys.h"
 #include "utils.h"
+#include <stdlib.h>
 
 //////Surfaces & Textures//////
 SDL_Rect surf_rect(char* path)
@@ -35,7 +36,7 @@ void draw_gfx_line(int xystart, int xyend, int xyconst, SDL_Surface* gfx, char d
 void draw_gfx(SDL_Surface* gfx, int x, int y)
 {SDL_Rect r={x, y, gfx->clip_rect.w, r.h=gfx->clip_rect.h};SDL_BlitSurface(gfx, NULL, sys.Viewport,&r);}
 
-void draw_tex(SDL_Texture* tex, SDL_Rect clip){SDL_RenderCopy(sys.Renderer, tex, &clip, &sys.Viewport->clip_rect);}
+void draw_tex(SDL_Texture* tex, SDL_Rect clip){SDL_RenderCopy(sys.Renderer, tex, NULL, &clip);}
 
 SDL_Texture* loadtex(char * path){return (SDL_Texture*)IMG_LoadTexture(sys.Renderer, path);}
 ////////////////////////////

@@ -10,6 +10,7 @@ SDL_Rect surf_rect(char* path)
 	SDL_FreeSurface(s); 
 	return pass;
 }
+
 SDL_Surface* loadoptgfx(char* path)
 {
 	SDL_Surface* optsurface = NULL;
@@ -34,11 +35,19 @@ void draw_gfx_line(int xystart, int xyend, int xyconst, SDL_Surface* gfx, char d
 }
 
 void draw_gfx(SDL_Surface* gfx, int x, int y)
-{SDL_Rect r={x, y, gfx->clip_rect.w, r.h=gfx->clip_rect.h};SDL_BlitSurface(gfx, NULL, sys.Viewport,&r);}
+{	
+	SDL_Rect r={x, y, gfx->clip_rect.w, r.h=gfx->clip_rect.h};SDL_BlitSurface(gfx, NULL, sys.Viewport,&r);
+}
 
-void draw_tex(SDL_Texture* tex, SDL_Rect clip){SDL_RenderCopy(sys.Renderer, tex, NULL, &clip);}
+void draw_tex(SDL_Texture* tex, SDL_Rect clip)
+{	
+	SDL_RenderCopy(sys.Renderer, tex, NULL, &clip);
+}
 
-SDL_Texture* loadtex(char * path){return (SDL_Texture*)IMG_LoadTexture(sys.Renderer, path);}
+SDL_Texture* loadtex(char * path)
+{
+	return (SDL_Texture*)IMG_LoadTexture(sys.Renderer, path);
+}
 ////////////////////////////
 
 
@@ -46,15 +55,12 @@ SDL_Texture* loadtex(char * path){return (SDL_Texture*)IMG_LoadTexture(sys.Rende
 
 
 ///////////Sprites//////////
-
-sprite load_sprite(char* name, char* sheetpath)
-{
-	sprite s;
+sprite load_sprite(char* name, char* path)
+{	sprite s;
 	s.name=name;
-	s.rect = surf_rect(sheetpath);
-	s.sheet = loadtex(sheetpath);
-	SDL_Rect r = {0,0,32,32};
-	s.clip[0]=r;	
+	s.rect = surf_rect(path);
+	s.sheet = loadtex(path);
+	s.clip[0]=(SDL_Rect){0,0,32,32};
 	if (s.sheet == NULL){printf("spritesheet could not be found!%s", SDL_GetError());}
 	else{
 		for (int i = 1; i < 4; i++)
@@ -69,11 +75,13 @@ sprite load_sprite(char* name, char* sheetpath)
 }
 
 void animate_sprite(sprite s, SDL_Point p)
-{
+{	
 	int frame = (int)((SDL_GetTicks()/200)%4);
 	SDL_Rect renderloc ={p.x, p.y,32,32};
-	SDL_SetRenderDrawBlendMode(sys.Renderer, SDL_BLENDMODE_BLEND);
+//	SDL_SetRenderDrawBlendMode(sys.Renderer, SDL_BLENDMODE_BLEND);
+//	SDL_SetRenderTarget(sys.Renderer, s.sheet);
 	SDL_RenderCopy(sys.Renderer, s.sheet, &s.clip[frame],&renderloc);
+	SDL_RenderPresent(sys.Renderer);
 }
 
 void debug_sprite(sprite s) 

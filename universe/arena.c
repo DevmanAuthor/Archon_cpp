@@ -1,6 +1,8 @@
 #include "arena.h"
 
 //Arena//
+tile Default_tile;
+arena Arena;
 void arena_init(tile B)
 {
 	Arena.Basetile = B;
@@ -20,7 +22,7 @@ void arena_init(tile B)
 	}
 }
 
-void arena_load()
+void arena_load_content()
 {
 	Arena.Border.nw.gfx = loadoptgfx("content/gfx/Viewport/border-corner-nw.png");
 	Arena.Border.ne.gfx = loadoptgfx("content/gfx/Viewport/border-corner-ne.png");
@@ -33,18 +35,13 @@ void arena_load()
 }
 void arena_draw()
 {
-		for (int x = Arena.bounds.x; x < Arena.bounds.w; x += Arena.Basetile.gfx->clip_rect.w)
-		{
-			for (int y = Arena.bounds.y; y < Arena.bounds.h; y += Arena.Basetile.gfx->clip_rect.h)
-			{
-				draw_gfx(Arena.Basetile.gfx, x,y);				
-			}
-		}
+	arena_outline_draw();
+	arena_grid_draw();
 }
 
 
-//Outline//
-void outline_draw()
+//Outline & Grid//
+void arena_outline_draw()
 {
 	//horizontal outlines
 	draw_gfx_line(Arena.bounds.x, Arena.bounds.w, Arena.bounds.y - Arena.Border.h.gfx->clip_rect.h, Arena.Border.h.gfx, 'h');
@@ -59,4 +56,13 @@ void outline_draw()
 	draw_gfx(Arena.Border.sw.gfx, Arena.bounds.x-Arena.Border.sw.gfx->w, Arena.bounds.h);
 }	
 
-
+void arena_grid_draw()
+{
+		for (int x = Arena.bounds.x; x < Arena.bounds.w; x += Arena.Basetile.gfx->clip_rect.w)
+		{
+			for (int y = Arena.bounds.y; y < Arena.bounds.h; y += Arena.Basetile.gfx->clip_rect.h)
+			{
+				draw_gfx(Default_tile.gfx, x,y);
+			}
+		}
+}

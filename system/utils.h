@@ -4,7 +4,7 @@
 #include <SDL2/SDL_image.h>
 
 //Data//
-typedef enum bool{true=1,false=0}bool;
+typedef enum _bool{_true=1,_false=0}_bool;
 
 //Surfaces//
 SDL_Surface* loadoptgfx(char* path);//load optimized surface
@@ -17,12 +17,12 @@ SDL_Rect surf_rect(char * path);//get a surface's rectangle
 
 //Sprite//
 typedef struct sprite{int frame; char* name; SDL_Rect clip[4]; SDL_Texture* sheet; SDL_Rect rect;} sprite; //sprite type
-sprite load_sprite(char* name, char* sheetpath);//load spritesheet from file and return sprite
+sprite load_sprite(char* name, char* path);//load spritesheet from file and return sprite
 void debug_sprite(sprite s);//print sprite info
 void animate_sprite(sprite s, SDL_Point p);
 /////////
 
 //Tiles//
 typedef struct tile{SDL_Point pos; SDL_Surface* gfx;} tile; 
-
+/////////
 #endif

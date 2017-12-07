@@ -1,5 +1,6 @@
 #include "sys.h"
 
+System sys;
 int sys_init()
 {
 	sys.WIDTH=640;
@@ -13,12 +14,14 @@ int sys_init()
 	else{SDL_FillRect(sys.Viewport, NULL, SDL_MapRGB(sys.Viewport->format, 0,0,0));} 
 	int imgflags = IMG_INIT_PNG;
 	if(!(IMG_Init(imgflags) & imgflags)) {printf("SDL_Image could not start imgflags! %s", SDL_GetError());}
-
+	SDL_RenderSetLogicalSize(sys.Renderer, 640,480);
 }
 
 void sys_update()
 {
-	SDL_UpdateWindowSurface(sys.Window); 
+	SDL_UpdateWindowSurface(sys.Window);
+	SDL_RenderPresent(sys.Renderer);
+	SDL_RenderClear(sys.Renderer);	 
 }
 
 

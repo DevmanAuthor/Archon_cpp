@@ -1,4 +1,4 @@
-_cc=gcc
+_cc=g++
 sys=system
 uni=universe
 

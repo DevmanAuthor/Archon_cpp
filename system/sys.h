@@ -15,7 +15,7 @@ typedef struct System
 	SDL_Event Queue;
 } System;
 
-System sys;
+extern System sys;
 int sys_init();
 void sys_update();
 

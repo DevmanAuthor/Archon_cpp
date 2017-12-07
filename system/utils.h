@@ -5,6 +5,7 @@
 
 //Data//
 typedef enum _bool{_true=1,_false=0}_bool;
+void tween(SDL_Point& start, SDL_Point& end);
 
 //Surfaces//
 SDL_Surface* loadoptgfx(char* path);//load optimized surface

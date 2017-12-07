@@ -1,25 +1,19 @@
 #include "world.h"
 
 entity Man;
-SDL_Point max = {480,480};
 
 void world_init()
 {
 	world_load_content();
+	Man.pos=Arena.block[1][1];
 }
 
 void world_draw()
 {
 	arena_draw();
 	entity_draw(Man);
-	SDL_Point* p = &Man.pos;
-	move_lr(p);
-	printf("Man's position={%d,%d}\n", Man.pos.x, Man.pos.y);
-		if(p->x == max.x && p->y == max.y)
-			{
-				*p =(SDL_Point){0,0};
-			}
-
+	SDL_Point there = Arena.block[13][13];
+	tween(Man.pos, there);
 }
 
 void world_load_content()

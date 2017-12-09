@@ -2,10 +2,7 @@
 #include "utils.h"
 #include <stdlib.h>
 
-void tween(SDL_Point& start, SDL_Point& end){
-	SDL_Point* st =&start;
-	SDL_Point* en =&end;
-	
+void tween(SDL_Point* st, SDL_Point* en){
 	if (st->x == en->x){
 		printf("same x of start.x! start.x=%d ",st->x);
 	} else if(st->x < en->x){
@@ -24,7 +21,20 @@ void tween(SDL_Point& start, SDL_Point& end){
 	}
 } 
 
+void tween_straight(SDL_Point* st, SDL_Point* en){
+	int dx = en->x - st->x;
+	int dy = en->y - st->y;
 
+	static int rx =  ((float)dx / (float)dy) + 0.8;
+	static int ry =  ((float)dy / (float)dx) + 0.8;		
+
+	if (dx > 0)
+		{st->x+=rx;}
+	if (dy > 0)
+		{st->y+=ry;}	
+
+	printf("dx:%d\tdy:%d\trx:%d\try:%d\n:",dx,dy,rx,ry);	
+}
 
 //----------------------------------------Surfaces & Textures-----------------------------------------//
 SDL_Rect surf_rect(char* path){

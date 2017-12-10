@@ -5,10 +5,14 @@
 #include "entity.h"
 #include "arena.h"
 #include <SDL2/SDL.h>
+#include <time.h>
+
+extern F_Point there;
 
 //World//
 void world_init();
 void world_draw();
 void world_load_content();
+void move();
 
 #endif

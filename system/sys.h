@@ -13,6 +13,7 @@ typedef struct System
 	SDL_Surface* Viewport;
 	SDL_Renderer* Renderer;
 	SDL_Event Queue;
+	const Uint8* keyb;
 } System;
 
 extern System sys;

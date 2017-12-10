@@ -2,7 +2,7 @@
 #include "utils.h"
 #include <stdlib.h>
 
-void tween(SDL_Point* st, SDL_Point* en){
+void tween(F_Point* st, F_Point* en){
 	if (st->x == en->x){
 		printf("same x of start.x! start.x=%d ",st->x);
 	} else if(st->x < en->x){
@@ -21,19 +21,42 @@ void tween(SDL_Point* st, SDL_Point* en){
 	}
 } 
 
-void tween_straight(SDL_Point* st, SDL_Point* en){
+
+void tween_straight(F_Point* st, F_Point* en){
 	int dx = en->x - st->x;
 	int dy = en->y - st->y;
+	//int rx = (dx/dy);
+	//int ry = (dy/dx);
+	if (st->x == en->x){
+		printf("same x of start.x! start.x=%d ",st->x);
+	} else if(st->x < en->x){
+		st->x+= (int)(dx / 2);
+	} else if(st->x > en->x){
+		st->x+= (int)(dx / 2);
+	}
 
-	static int rx =  ((float)dx / (float)dy) + 0.8;
-	static int ry =  ((float)dy / (float)dx) + 0.8;		
+	
+	if (st->y == en->y){
+		printf("same y of start.y! start.y=%d ",st->y);
+	} else if(st->y < en->y){
+		st->y+= (int)(dy / 2);
+	} else if(st->y > en->y){
+		st->y+= (int)(dy / 2)-2;
+	}
+/*
+	if (dx > 0)	{	
+		float rx = dx / dy; st->x+=rx;
+	} else if (dx < 0) {
+		float rx = dx / dy; st->x-=(float)rx;
+	}
 
-	if (dx > 0)
-		{st->x+=rx;}
-	if (dy > 0)
-		{st->y+=ry;}	
 
-	printf("dx:%d\tdy:%d\trx:%d\try:%d\n:",dx,dy,rx,ry);	
+	if (dy > 0){
+		float ry = dy / dx; st->y+=(float)ry;
+	} else if (dy < 0) {
+		float ry = dy / dx; st->y-=(float)ry;
+	}*/
+	printf("dx:%d  dy:%d\t manpos={%f,%f}\t  rx:%f   ry:%f: \n",dx,dy, st->x,st->y);// rx,ry);
 }
 
 //----------------------------------------Surfaces & Textures-----------------------------------------//

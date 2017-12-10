@@ -1,6 +1,6 @@
 #include "system/game.h"
 
-int main()
+int main(int argc, char *argv[])
 {
 	game_init();
 	game_run();	

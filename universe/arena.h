@@ -11,7 +11,7 @@ typedef struct arena
 		border Border; 
 		tile Basetile;
 		SDL_Point grid_limit;
-		SDL_Point block[19][14];
+		SDL_Rect block[19][14];
 	} arena; extern arena Arena;
 
 void arena_init(tile B);

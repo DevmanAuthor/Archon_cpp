@@ -4,7 +4,7 @@ uni=universe
 
 _srcs=main.c $(sys)/sys.c $(sys)/game.c $(sys)/utils.c $(uni)/world.c $(uni)/arena.c $(uni)/entity.c 
 _bin=Hinom
-_libs=-lSDL2 -lncurses -lSDL2_image -lSDL2_gfx 
+_libs= -lmingw32 -lSDL2main -lSDL2 -lSDL2_image 
 _dirs=-I$(sys) -I$(uni)
 
 all: $(srcs)

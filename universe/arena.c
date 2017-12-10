@@ -17,6 +17,8 @@ void arena_init(tile B)
 			{
 				Arena.block[i][j].x += i * 32;
 				Arena.block[i][j].y += j * 32;
+				Arena.block[i][j].w = Arena.Basetile.gfx->clip_rect.w;
+				Arena.block[i][j].h = Arena.Basetile.gfx->clip_rect.h;
 				printf("Arena.pos[%d][%d}= {%d,%d}\n",i,j, Arena.block[i][j].x, Arena.block[i][j].y);	
 			}
 	}
@@ -30,7 +32,7 @@ void arena_load_content()
 	Arena.Border.sw.gfx = loadoptgfx("content/gfx/Viewport/border-corner-sw.png");
 	Arena.Border.v.gfx = loadoptgfx("content/gfx/Viewport/border-vertical.png");
 	Arena.Border.h.gfx = loadoptgfx("content/gfx/Viewport/border-horizontal.png");
-	Default_tile.gfx = loadoptgfx("content/gfx/Viewport/tilesz.png");
+	Default_tile.gfx = loadoptgfx("content/gfx/Viewport/tilesz1.png");
 
 }
 void arena_draw()

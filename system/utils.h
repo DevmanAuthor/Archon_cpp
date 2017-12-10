@@ -1,13 +1,15 @@
 #ifndef UTILS_H
 #define UTILS_H
+#include <stdio.h>
 #include <math.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
 //Data//
 typedef enum _bool{_true=1,_false=0}_bool;
-void tween(SDL_Point* st, SDL_Point* en);
-void tween_straight(SDL_Point* st, SDL_Point* en);
+typedef struct F_Point{ double x; double y;} F_Point;
+void tween(F_Point* st, F_Point* en);
+void tween_straight(F_Point* st, F_Point* en);
 //Surfaces//
 SDL_Surface* loadoptgfx(char* path);//load optimized surface
 void draw_gfx_line(int start, int end, int xyconst, SDL_Surface* gfx, char d);//draw a line of surfaces going either horizontal or vertical

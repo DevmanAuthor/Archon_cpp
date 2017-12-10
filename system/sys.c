@@ -7,7 +7,7 @@ int sys_init()
 	sys.HEIGHT=480;	
 
 	if(SDL_Init(SDL_INIT_EVERYTHING) != 0)	{printf("SDL Could not Start Everthing! %s", SDL_GetError()); }
-	else {sys.Window = SDL_CreateWindow("-",0,0, sys.WIDTH, sys.HEIGHT, SDL_WINDOW_SHOWN);}
+	else {sys.Window = SDL_CreateWindow("-", 100,100, sys.WIDTH, sys.HEIGHT, SDL_WINDOW_SHOWN);}
 	if(sys.Window == NULL) 	{printf("SDL Could not make Window! %s", SDL_GetError());}
 	else {sys.Viewport = SDL_GetWindowSurface(sys.Window); sys.Renderer = SDL_CreateRenderer(sys.Window, -1, SDL_RENDERER_SOFTWARE);}	
 	if (sys.Renderer == NULL) {printf("SDL Could not make Renderer! %s", SDL_GetError());}
@@ -21,8 +21,10 @@ void sys_update()
 {
 	SDL_UpdateWindowSurface(sys.Window);
 	SDL_RenderPresent(sys.Renderer);
-	SDL_RenderClear(sys.Renderer);	 
-}
+	SDL_RenderClear(sys.Renderer);
+	sys.keyb = SDL_GetKeyboardState(NULL);
+}	
+
 
 
 

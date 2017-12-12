@@ -32,7 +32,7 @@ void arena_load_content()
 	Arena.Border.sw.gfx = loadoptgfx("content/gfx/Viewport/border-corner-sw.png");
 	Arena.Border.v.gfx = loadoptgfx("content/gfx/Viewport/border-vertical.png");
 	Arena.Border.h.gfx = loadoptgfx("content/gfx/Viewport/border-horizontal.png");
-	Default_tile.gfx = loadoptgfx("content/gfx/Viewport/tilesz1.png");
+	Default_tile.gfx = loadoptgfx("content/gfx/Viewport/tilesz.png");
 
 }
 void arena_draw()

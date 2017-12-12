@@ -13,6 +13,5 @@ extern F_Point there;
 void world_init();
 void world_draw();
 void world_load_content();
-void move();
 
 #endif
